@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>BloxScripts • Premium Loadstring Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --bg: #06060b; --surface: #0d0d1a; --surface-light: #151528;
+      --primary: #2ecc71; --primary-neon: #39ff14; --accent: #a855f7;
+      --accent-neon: #c084fc; --gold: #f59e0b; --text: #e8ecf1;
+      --text-secondary: #8892a4; --border: #1e1e32; --danger: #ef4444;
+      --star: #fbbf24; --shadow: 0 12px 40px rgba(0,0,0,0.95); --radius: 18px;
+      --glow-green: 0 0 20px rgba(46,204,113,0.6);
+      --glow-purple: 0 0 20px rgba(168,85,247,0.5);
+      --gradient-hero: linear-gradient(135deg, #0f0f23 0%, #1a0a2e 50%, #0a1a1a 100%);
+      --gradient-card: linear-gradient(145deg, #12122a 0%, #0d0d20 100%);
+      transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    body.light {
+      --bg: #f0f2f5; --surface: #ffffff; --surface-light: #f5f7fa;
+      --primary: #16a34a; --primary-neon: #22c55e; --accent: #7c3aed;
+      --accent-neon: #8b5cf6; --text: #111827; --text-secondary: #4b5563;
+      --border: #d1d5db; --shadow: 0 8px 25px rgba(0,0,0,0.1);
+      --gradient-hero: linear-gradient(135deg, #ffffff 0%, #f3e8ff 50%, #dcfce7 100%);
+      --gradient-card: linear-gradient(145deg, #ffffff 0%, #f9fafb 100%);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', 'Inter', sans-serif; }
+    body { 
+      background: var(--bg); color: var(--text); min-height: 100vh; padding: 0 6px;
+      background-image: radial-gradient(ellipse at 20% 10%, rgba(46,204,113,0.03) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 90%, rgba(168,85,247,0.04) 0%, transparent 50%);
+    }
+    .app-container { max-width: 520px; margin: 0 auto; width: 100%; min-height: 100vh; padding: 12px 0 24px; display: flex; flex-direction: column; }
+    .top-bar {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+      flex-wrap: wrap; gap: 8px; background: var(--gradient-card); border-radius: 40px;
+      padding: 10px 16px; border: 1px solid var(--border); box-shadow: var(--shadow);
+    }
+    .logo {
+      font-weight: 900; font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--primary-neon), var(--accent-neon));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-shadow: 0 0 20px var(--primary-neon);
+    }
+    .theme-btn {
+      background: var(--surface-light); border: 1px solid var(--border); border-radius: 30px;
+      padding: 8px 14px; display: flex; align-items: center; gap: 6px; font-weight: 700;
+      font-size: 0.8rem; cursor: pointer; color: var(--text); transition: 0.2s;
+    }
+    .theme-btn:hover { border-color: var(--primary-neon); box-shadow: var(--glow-green); }
+    .nav-tabs {
+      display: flex; background: var(--surface); border-radius: 35px; padding: 4px;
+      margin-bottom: 14px; border: 1px solid var(--border); overflow-x: auto; box-shadow: var(--shadow);
+    }
+    .nav-tab {
+      flex: 1; text-align: center; padding: 11px 4px; border-radius: 30px; font-weight: 700;
+      font-size: 0.7rem; cursor: pointer; color: var(--text-secondary); background: transparent;
+      border: none; white-space: nowrap; transition: 0.2s;
+    }
+    .nav-tab.active { background: linear-gradient(135deg, var(--primary), #1e8e4a); color: #fff; box-shadow: var(--glow-green); font-weight: 800; }
+    .nav-tab:hover { color: var(--primary-neon); }
+    .page { display: none; flex:1; }
+    .page.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+    .card {
+      background: var(--gradient-card); border-radius: var(--radius); padding: 18px;
+      margin-bottom: 14px; border: 1px solid var(--border); box-shadow: var(--shadow);
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+      border-radius: 4px 0 0 4px;
+    }
+    .hero-card { background: var(--gradient-hero); border: 1px solid var(--border); box-shadow: var(--glow-purple); }
+    .hero-card::before { background: linear-gradient(to bottom, var(--primary-neon), var(--accent-neon), var(--gold)); }
+    .contact-card { border-left: 4px solid #3b82f6; }
+    .contact-card::before { background: linear-gradient(to bottom, #3b82f6, #8b5cf6); }
+    .btn {
+      background: var(--surface-light); border: 1px solid var(--border); padding: 10px 16px;
+      border-radius: 24px; font-weight: 700; cursor: pointer; color: var(--text);
+      display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; transition: 0.2s;
+    }
+    .btn:hover { border-color: var(--primary-neon); transform: translateY(-1px); box-shadow: var(--glow-green); }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), #1e8e4a); color:#fff; border:none; }
+    .btn-primary:hover { box-shadow: 0 0 25px rgba(46,204,113,0.8); }
+    .btn-accent { background: linear-gradient(135deg, var(--accent), #6d28d9); color:#fff; border:none; }
+    .btn-accent:hover { box-shadow: 0 0 25px rgba(168,85,247,0.8); }
+    .btn-gold { background: linear-gradient(135deg, var(--gold), #d97706); color:#000; border:none; }
+    .btn-sm { padding: 6px 14px; font-size: 0.7rem; }
+    .btn-xs { padding: 4px 10px; font-size: 0.65rem; border-radius: 16px; }
+    .badge { font-size: 0.6rem; padding: 4px 10px; border-radius: 14px; font-weight:800; display:inline-block; }
+    .badge.key{background:#e67e22;color:#fff;} .badge.nokey{background:#27ae60;color:#fff;}
+    .badge.paid{background:#dc2626;color:#fff;} .badge.free{background:#2ecc71;color:#000;}
+    .badge.verified{background:#3b82f6;color:#fff; box-shadow:0 0 10px rgba(59,130,246,0.5);}
+    input, select, textarea {
+      background: var(--surface-light); border:1px solid var(--border); border-radius:14px;
+      padding:11px; color:var(--text); width:100%; margin:5px 0; outline:none; font-size:0.9rem;
+      transition: 0.2s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--primary-neon); box-shadow: 0 0 10px rgba(46,204,113,0.2); }
+    .flex-row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .hidden { display:none !important; }
+    .empty-state { text-align:center; padding:30px 20px; color:var(--text-secondary); }
+    .empty-state i { font-size:3rem; margin-bottom:10px; opacity:0.3; }
+    .script-actions { display:flex; gap:6px; margin-top:8px; flex-wrap:wrap; }
+    .search-wrap {
+      display: flex; align-items: center; background: var(--surface-light); border-radius: 40px;
+      padding: 4px 4px 4px 16px; margin-bottom: 10px; border:1px solid var(--border); box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .search-wrap input { flex:1; background:transparent; border:none; padding:12px 6px; color:var(--text); outline:none; }
+    .search-wrap button {
+      background: linear-gradient(135deg, var(--primary), #1e8e4a); border:none; border-radius:30px;
+      padding:10px 16px; cursor:pointer; color:#fff; font-weight:700; transition:0.2s;
+    }
+    .search-wrap button:hover { box-shadow: var(--glow-green); }
+    .tag {
+      background: var(--surface-light); border: 1px solid var(--border); border-radius: 20px;
+      padding: 6px 12px; font-size: 0.7rem; cursor: pointer; transition: 0.2s;
+    }
+    .tag.selected { background: var(--primary); color: #000; border-color: var(--primary); box-shadow: var(--glow-green); }
+    .timestamp { font-size: 0.65rem; color: var(--text-secondary); }
+    .neon-text { text-shadow: 0 0 10px var(--primary-neon), 0 0 20px var(--primary-neon); }
+    .footer {
+      text-align: center; padding: 20px 0 10px; margin-top: auto;
+      border-top: 1px solid var(--border); font-size: 0.7rem; color: var(--text-secondary);
+    }
+    .footer .firedev { 
+      color: var(--primary-neon); font-weight: 700; 
+      text-shadow: 0 0 8px var(--primary-neon);
+    }
+    .email-link {
+      color: var(--primary-neon); text-decoration: none; font-weight: 700; transition: 0.2s; word-break: break-all;
+    }
+    .email-link:hover { text-shadow: 0 0 12px var(--primary-neon); text-decoration: underline; }
+    .trending-item { padding: 8px 0; border-bottom: 1px solid var(--border); transition: 0.2s; }
+    .trending-item:hover { background: var(--surface-light); border-radius: 8px; padding-left: 8px; }
+    .stat-badge {
+      display: inline-block; background: var(--surface-light); border: 1px solid var(--primary);
+      border-radius: 20px; padding: 6px 14px; margin: 4px; font-size: 0.75rem; font-weight: 700;
+    }
+  </style>
+</head>
+<body class="dark">
+<div class="app-container">
+  <!-- HEADER -->
+  <div class="top-bar">
+    <div class="logo">🔥 BloxScripts</div>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <span id="syncStatus" style="font-size:0.65rem;">☁️ Loading...</span>
+      <button class="theme-btn" id="themeToggle">
+        <i class="fas fa-moon"></i> <span id="themeLabel">Dark</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <div class="nav-tabs" id="navTabs">
+    <button class="nav-tab active" data-page="home">🏠 Home</button>
+    <button class="nav-tab" data-page="scripts">📜 Scripts</button>
+    <button class="nav-tab" data-page="upload">📤 Upload</button>
+    <button class="nav-tab" data-page="account">👤 Account</button>
+    <button class="nav-tab" data-page="admin" id="adminTab" style="display:none;">⚙️ Admin</button>
+  </div>
+
+  <!-- HOME PAGE -->
+  <div id="homePage" class="page active">
+    <div class="card hero-card">
+      <h3 class="neon-text" style="font-size:1.4rem;">🔥 BloxScripts Hub</h3>
+      <p>Made by <strong style="color:var(--primary-neon);">FirePlayz</strong> • © 2026</p>
+      <p style="font-size:0.8rem; color:var(--text-secondary);">Safe, verified Roblox scripts • GitHub Powered ☁️</p>
+    </div>
+
+    <!-- CONTACT CARD -->
+    <div class="card contact-card">
+      <h4 style="display:flex; align-items:center; gap:8px;">
+        <i class="fas fa-bug" style="color:#3b82f6;"></i> Report Bugs & Contact
+      </h4>
+      <p style="font-size:0.85rem; margin-bottom:8px; color:var(--text-secondary);">
+        Found a glitch? Script not working? Have suggestions? Email me directly:
+      </p>
+      <div style="background:var(--surface-light); border-radius:14px; padding:12px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+        <i class="fas fa-envelope" style="font-size:1.8rem; color:#3b82f6;"></i>
+        <a href="mailto:magorketo62@gmail.com" class="email-link" style="font-size:0.7rem;">
+          magorketo62@gmail.com
+        </a>
+        <button class="btn btn-sm" onclick="navigator.clipboard.writeText('magorketo62@gmail.com');alert('📧 Email copied!')" title="Copy email">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+      </div>
+      <p style="font-size:0.7rem; color:var(--text-secondary); margin-top:8px;">
+        <i class="fas fa-clock"></i> I usually respond within 24-48 hours. Include screenshots if possible!
+      </p>
+    </div>
+
+    <!-- TRENDING TODAY -->
+    <div class="card">
+      <h4 style="display:flex; align-items:center; gap:8px;">
+        <i class="fas fa-fire" style="color:var(--gold);"></i> Trending Today
+      </h4>
+      <div id="trendingList">
+        <div class="empty-state"><i class="fas fa-chart-line"></i><p>No trending scripts yet.<br>Be the first to upload!</p></div>
+      </div>
+    </div>
+
+    <!-- VERIFIED SCRIPTS -->
+    <div class="card">
+      <h4 style="display:flex; align-items:center; gap:8px;">
+        <i class="fas fa-shield-alt" style="color:#3b82f6;"></i> Verified Safe Scripts
+      </h4>
+      <div id="verifiedList">
+        <div class="empty-state"><i class="fas fa-shield-alt"></i><p>No verified scripts yet.</p></div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="card">
+      <h4>📊 Hub Stats</h4>
+      <div id="statsBox" style="margin-top:8px;"></div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS PAGE -->
+  <div id="scriptsPage" class="page">
+    <div class="search-wrap">
+      <i class="fas fa-search" style="color:var(--primary);"></i>
+      <input type="text" id="searchInput" placeholder="Search scripts by name, game, executor...">
+      <button id="searchBtn"><i class="fas fa-filter"></i> Search</button>
+    </div>
+    <select id="filterGame" style="width:100%; margin-bottom:6px;"><option value="">🎮 All Games</option></select>
+    <select id="filterKey" style="width:100%; margin-bottom:6px;"><option value="">🔑 All Key Types</option><option value="no key">🔓 No Key</option><option value="key">🔑 Key Required</option></select>
+    <select id="filterExecutor" style="width:100%; margin-bottom:6px;"><option value="">⚡ All Executors</option></select>
+    <div id="scriptListContainer"></div>
+  </div>
+
+  <!-- UPLOAD PAGE -->
+  <div id="uploadPage" class="page">
+    <div id="uploadLoggedOut" class="card">
+      <h3>🔒 Login Required</h3>
+      <p>Please login to upload scripts.</p>
+      <button class="btn btn-primary" onclick="document.querySelector('[data-page=account]').click()">Go to Account</button>
+    </div>
+    <div id="uploadLoggedIn" class="hidden">
+      <div class="card"><h3>📤 Upload Your Script</h3><p style="font-size:0.8rem; color:var(--text-secondary);">Upload .lua/.txt file or paste loadstring</p></div>
+      <div class="card">
+        <div id="dropZone" style="border:2px dashed var(--border); border-radius:14px; padding:20px; text-align:center; cursor:pointer; margin:8px 0; transition:0.2s;">
+          <i class="fas fa-cloud-upload-alt" style="font-size:2.5rem; color:var(--primary);"></i>
+          <p>Drop .lua or .txt file here</p>
+          <p style="font-size:0.7rem; color:var(--text-secondary);">or click to browse</p>
+          <input type="file" id="fileInput" accept=".lua,.txt,.text" style="display:none;">
+        </div>
+        <div id="filePreview" class="hidden" style="margin:8px 0;">
+          <p style="font-size:0.75rem;">📄 File loaded!</p>
+        </div>
+        <textarea id="pasteLoadstring" placeholder="Or paste loadstring here...&#10;loadstring(game:HttpGet('...'))()" rows="3"></textarea>
+      </div>
+      <div class="card">
+        <h4>✏️ Edit Before Publishing</h4>
+        <input id="editName" placeholder="Script Name *">
+        <select id="editGame"><option value="">Select Game *</option><option>Grow a Garden</option><option>BloxFruits</option><option>Steal a Brainrot</option><option>King Legacy</option></select>
+        <select id="editExecutor"><option value="">Select Executor *</option><option>Synapse X</option><option>KRNL</option><option>Fluxus</option><option>ScriptWare</option><option>Hydrogen</option><option>Comet</option><option>Arceus X</option><option>CodeX</option><option>Delta</option><option>Vega X</option><option>Trigone</option><option>Universal</option></select>
+        <div class="flex-row" style="gap:6px; margin:6px 0;">
+          <span class="tag" id="tagNoKey" onclick="selectKey('no key')">🔓 No Key</span>
+          <span class="tag" id="tagKey" onclick="selectKey('key')">🔑 Key Required</span>
+        </div>
+        <div class="flex-row" style="gap:6px; margin:6px 0;">
+          <span class="tag" id="tagFree" onclick="selectPaid('free')">🆓 Free</span>
+          <span class="tag" id="tagPaid" onclick="selectPaid('paid')">💰 Paid</span>
+        </div>
+        <textarea id="editFeatures" placeholder="Features (one per line)" rows="2"></textarea>
+        <button class="btn btn-gold" id="publishBtn" style="width:100%; margin-top:8px;">🚀 Publish Script</button>
+        <button class="btn" id="clearFormBtn" style="width:100%; margin-top:4px;">🗑️ Clear Form</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT PAGE -->
+  <div id="accountPage" class="page">
+    <div id="loggedOutView">
+      <div class="card">
+        <h3><i class="fas fa-sign-in-alt"></i> Login / Sign Up</h3>
+        <input type="text" id="loginUsername" placeholder="Username (case insensitive)">
+        <input type="password" id="loginPassword" placeholder="Password (case sensitive)">
+        <button class="btn btn-primary" id="loginBtn" style="width:100%;">Login</button>
+        <button class="btn btn-accent" id="signupBtn" style="width:100%; margin-top:6px;">Sign Up</button>
+        <p style="font-size:0.65rem; color:var(--text-secondary); margin-top:8px; text-align:center;">
+          <i class="fas fa-info-circle"></i> Username not case sensitive • Password IS case sensitive
+        </p>
+      </div>
+    </div>
+    <div id="loggedInView" class="hidden">
+      <div class="card">
+        <h3>Welcome, <span id="profileName"></span>! <span id="adminBadge" class="badge verified hidden">ADMIN</span></h3>
+        <button class="btn" id="logoutBtn" style="width:100%; margin-top:8px;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+      <div class="card">
+        <h4>👤 Account Settings</h4>
+        <button class="btn btn-accent" id="changePasswordBtn" style="width:100%;">🔒 Change Password</button>
+        <div id="changePasswordPanel" class="hidden" style="margin-top:8px;">
+          <input type="password" id="oldPassword" placeholder="Current Password">
+          <input type="password" id="newPassword" placeholder="New Password">
+          <button class="btn btn-primary" id="savePasswordBtn" style="width:100%;">Save New Password</button>
+        </div>
+        <button class="btn" id="deleteAccountBtn" style="width:100%; margin-top:6px; color:var(--danger);">🗑️ Delete My Account</button>
+      </div>
+      <div class="card">
+        <h4>📜 My Uploaded Scripts</h4>
+        <div id="myScriptsList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN PAGE -->
+  <div id="adminPage" class="page">
+    <div class="card">
+      <h3>⚙️ Admin Control Panel</h3>
+      <p style="font-size:0.8rem;">Total Scripts: <strong id="totalScripts">0</strong> | Total Users: <strong id="totalUsers">0</strong></p>
+    </div>
+    <div class="card">
+      <h4>📜 Manage All Scripts</h4>
+      <div id="adminScriptList"></div>
+    </div>
+    <div class="card">
+      <h4>👥 Manage Users</h4>
+      <div id="adminUserList"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>© 2026 BloxScripts. All rights reserved.</p>
+    <p>Powered by <span class="firedev">🔥 FireDev</span></p>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="hidden" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; display:flex; align-items:center; justify-content:center; padding:16px; backdrop-filter:blur(4px);">
+  <div class="card" style="max-width:450px; width:100%; max-height:80vh; overflow-y:auto;">
+    <h3>✏️ Edit Script</h3>
+    <input id="editModalName" placeholder="Script Name">
+    <select id="editModalGame"><option>Grow a Garden</option><option>BloxFruits</option><option>Steal a Brainrot</option><option>King Legacy</option></select>
+    <textarea id="editModalLoadstring" placeholder="Loadstring" rows="3"></textarea>
+    <select id="editModalExecutor"><option>Synapse X</option><option>KRNL</option><option>Fluxus</option><option>ScriptWare</option><option>Universal</option></select>
+    <select id="editModalKey"><option value="no key">No Key</option><option value="key">Key Required</option></select>
+    <select id="editModalPaid"><option value="free">Free</option><option value="paid">Paid</option></select>
+    <button class="btn btn-primary" id="saveEditBtn" style="width:100%; margin-top:8px;">💾 Save Changes</button>
+    <button class="btn" id="closeEditModal" style="width:100%; margin-top:4px;">Cancel</button>
+  </div>
+</div>
+
+<script>
+// ========== CONFIG ==========
+const GITHUB_USERNAME = 'bFruitScript';
+const GITHUB_REPO = 'bfruitscript.github.io';
+const GITHUB_TOKEN = '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';
+const DATA_FILE = 'scripts.json';
+const ADMIN_USER = "FirePlayzYT0";
+const ADMIN_PASS = "FireIsNear69";
+const gamesList = ["Grow a Garden", "BloxFruits", "Steal a Brainrot", "King Legacy"];
+const executorList = ["Synapse X","KRNL","Fluxus","ScriptWare","Hydrogen","Comet","Arceus X","CodeX","Delta","Vega X","Trigone","Universal"];
+
+const API_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${DATA_FILE}`;
+const RAW_URL = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/main/${DATA_FILE}`;
+
+let scripts = [], reviews = {}, editingScriptId = null;
+let users = JSON.parse(localStorage.getItem('bloxscripts_users')) || {};
+let currentUser = localStorage.getItem('bloxscripts_user') || null;
+let selectedKey = 'no key', selectedPaid = 'free';
+
+if (!users[ADMIN_USER]) { users[ADMIN_USER] = ADMIN_PASS; localStorage.setItem('bloxscripts_users', JSON.stringify(users)); }
+function isAdmin() { return currentUser && currentUser.toLowerCase() === ADMIN_USER.toLowerCase(); }
+
+// ========== THEME TOGGLE ==========
+const body = document.body;
+const themeToggle = document.getElementById('themeToggle');
+const themeLabel = document.getElementById('themeLabel');
+function setTheme(light) {
+  if (light) { body.classList.add('light'); body.classList.remove('dark'); themeToggle.innerHTML='<i class="fas fa-sun"></i> <span>Light</span>'; }
+  else { body.classList.remove('light'); body.classList.add('dark'); themeToggle.innerHTML='<i class="fas fa-moon"></i> <span>Dark</span>'; }
+  localStorage.setItem('bloxscripts_theme', light?'light':'dark');
+}
+themeToggle.addEventListener('click', ()=>setTheme(!body.classList.contains('light')));
+setTheme((localStorage.getItem('bloxscripts_theme')||'dark')==='light');
+
+// ========== TIME AGO ==========
+function timeAgo(ts) {
+  const s=Math.floor((Date.now()-ts)/1000);
+  if(s<60)return'Just now';
+  const m=Math.floor(s/60); if(m<60)return m+'m ago';
+  const h=Math.floor(m/60); if(h<24)return h+'h ago';
+  const d=Math.floor(h/24); if(d<30)return d+'d ago';
+  return new Date(ts).toLocaleDateString();
+}
+
+// ========== GITHUB ==========
+async function loadFromGitHub() {
+  document.getElementById('syncStatus').textContent='🔄 Loading...';
+  try {
+    const r=await fetch(RAW_URL+'?t='+Date.now());
+    if(r.ok){const d=await r.json(); scripts=d.scripts||[]; reviews=d.reviews||{}; document.getElementById('syncStatus').textContent='✅ Synced';}
+    else{scripts=[];reviews={};document.getElementById('syncStatus').textContent='📦 Empty';}
+  }catch(e){document.getElementById('syncStatus').textContent='⚠️ Offline';}
+  renderAll();
+}
+async function saveToGitHub() {
+  if(!GITHUB_TOKEN||GITHUB_TOKEN==='YOUR_GITHUB_TOKEN_HERE'){localStorage.setItem('bloxscripts_backup',JSON.stringify({scripts,reviews}));document.getElementById('syncStatus').textContent='💾 Local';return false;}
+  try{
+    const content=btoa(unescape(encodeURIComponent(JSON.stringify({scripts,reviews},null,2))));
+    const gr=await fetch(API_URL,{headers:{'Authorization':`token ${GITHUB_TOKEN}`}});
+    let sha=null; if(gr.ok){const d=await gr.json();sha=d.sha;}
+    const body={message:'📝 Update',content}; if(sha)body.sha=sha;
+    const sr=await fetch(API_URL,{method:'PUT',headers:{'Authorization':`token ${GITHUB_TOKEN}`,'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(sr.ok){document.getElementById('syncStatus').textContent='✅ Saved';return true;}
+  }catch(e){}
+  document.getElementById('syncStatus').textContent='❌ Error'; return false;
+}
+
+// ========== RENDER ==========
+function renderAll(){renderHome();renderScripts();renderMyScripts();renderAdminPanel();updateUploadPage();}
+
+function renderHome(){
+  const top=[...scripts].filter(s=>s.active).slice(0,5);
+  document.getElementById('trendingList').innerHTML=top.length?top.map(s=>`
+    <div class="trending-item">🔥 <strong>${s.name}</strong> <small>(${s.game})</small> <span class="timestamp">${timeAgo(s.createdAt)}</span></div>
+  `).join(''):'<div class="empty-state"><i class="fas fa-fire"></i><p>No trending scripts yet.</p></div>';
+  document.getElementById('verifiedList').innerHTML=scripts.filter(s=>s.active&&s.verified).slice(0,5).map(s=>`
+    <div class="trending-item">✅ <strong>${s.name}</strong> <small>(${s.game})</small> <span class="timestamp">${timeAgo(s.createdAt)}</span></div>
+  `).join('')||'<div class="empty-state"><i class="fas fa-shield-alt"></i><p>No verified scripts yet.</p></div>';
+  document.getElementById('statsBox').innerHTML=`
+    <span class="stat-badge">📜 ${scripts.length} Scripts</span>
+    <span class="stat-badge">✅ ${scripts.filter(s=>s.verified).length} Verified</span>
+    <span class="stat-badge">👥 ${Object.keys(users).length} Users</span>
+  `;
+}
+
+function renderScripts(filter=''){
+  const fg=document.getElementById('filterGame')?.value||'', fk=document.getElementById('filterKey')?.value||'', fe=document.getElementById('filterExecutor')?.value||'';
+  let list=scripts.filter(s=>s.active);
+  if(fg)list=list.filter(s=>s.game===fg); if(fk)list=list.filter(s=>s.keyStatus===fk); if(fe)list=list.filter(s=>s.executor===fe);
+  if(filter){const t=filter.toLowerCase(); list=list.filter(s=>s.name.toLowerCase().includes(t)||s.game.toLowerCase().includes(t)||s.executor.toLowerCase().includes(t)||s.creator.toLowerCase().includes(t));}
+  document.getElementById('scriptListContainer').innerHTML=list.length?list.map(s=>`
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;"><strong>${s.name}</strong>${s.verified?'<span class="badge verified">✅ Verified</span>':''}</div>
+      <small>🎮 ${s.game} • 👤 ${s.creator} • ⚡ ${s.executor}</small>
+      <div style="margin:4px 0;"><span class="badge ${s.keyStatus==='key'?'key':'nokey'}">${s.keyStatus}</span> <span class="badge ${s.paidStatus==='paid'?'paid':'free'}">${s.paidStatus}</span></div>
+      <div class="timestamp">🕐 Uploaded ${timeAgo(s.createdAt)}</div>
+      <div class="script-actions">
+        <button class="btn btn-primary btn-xs" onclick="event.stopPropagation();copyLS('${s.id}')">📋 Copy</button>
+        <button class="btn btn-accent btn-xs" onclick="event.stopPropagation();downloadLS('${s.id}')">💾 Download</button>
+      </div>
+    </div>
+  `).join(''):'<div class="empty-state"><i class="fas fa-scroll"></i><p>No scripts found.</p></div>';
+}
+
+function renderMyScripts(){if(!currentUser)return;const mine=scripts.filter(s=>s.creator===currentUser);document.getElementById('myScriptsList').innerHTML=mine.length?mine.map(s=>`<div style="background:var(--surface-light);padding:8px;border-radius:12px;margin:4px 0;"><strong>${s.name}</strong> <small>(${s.game})</small><div class="timestamp">🕐 ${timeAgo(s.createdAt)}</div><button class="btn btn-sm" style="color:var(--danger);" onclick="deleteScript('${s.id}')">🗑️</button></div>`).join(''):'<p style="color:var(--text-secondary);">No scripts uploaded yet.</p>';}
+
+function renderAdminPanel(){if(!isAdmin())return;document.getElementById('totalScripts').textContent=scripts.length;document.getElementById('totalUsers').textContent=Object.keys(users).length;document.getElementById('adminScriptList').innerHTML=scripts.map(s=>`<div style="background:var(--surface-light);padding:10px;border-radius:12px;margin:4px 0;"><strong>${s.name}</strong> (${s.game}) by ${s.creator}<div class="timestamp">🕐 ${timeAgo(s.createdAt)}</div><div class="flex-row"><button class="btn btn-sm" onclick="toggleVerify('${s.id}')">${s.verified?'Unverify':'Verify'}</button><button class="btn btn-sm" onclick="toggleActive('${s.id}')">${s.active?'Deactivate':'Activate'}</button><button class="btn btn-sm" onclick="openEditModal('${s.id}')">✏️ Edit</button><button class="btn btn-sm" style="color:var(--danger);" onclick="deleteScript('${s.id}')">🗑️</button></div></div>`).join('')||'<p>No scripts.</p>';document.getElementById('adminUserList').innerHTML=Object.keys(users).map(u=>`<div style="background:var(--surface-light);padding:8px;border-radius:12px;margin:4px 0;display:flex;justify-content:space-between;"><span>${u} ${u===ADMIN_USER?'👑':''}</span>${u!==ADMIN_USER?`<button class="btn btn-sm" style="color:var(--danger);" onclick="adminDeleteUser('${u}')">Remove</button>`:''}</div>`).join('')||'<p>No users.</p>';}
+
+function updateUploadPage(){if(currentUser){document.getElementById('uploadLoggedOut').classList.add('hidden');document.getElementById('uploadLoggedIn').classList.remove('hidden');}else{document.getElementById('uploadLoggedOut').classList.remove('hidden');document.getElementById('uploadLoggedIn').classList.add('hidden');}}
+
+// ========== ACTIONS ==========
+window.copyLS=(id)=>{const s=scripts.find(x=>x.id===id);if(s)navigator.clipboard.writeText(s.loadstring).then(()=>alert('📋 Loadstring copied!'));};
+window.downloadLS=(id)=>{const s=scripts.find(x=>x.id===id);if(!s)return;const b=new Blob([s.loadstring],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=s.name.replace(/[^a-z0-9]/gi,'_')+'.lua';a.click();};
+window.deleteScript=async(id)=>{if(!confirm('Delete this script?'))return;scripts=scripts.filter(s=>s.id!==id);await saveToGitHub();renderAll();};
+window.toggleVerify=async(id)=>{scripts=scripts.map(s=>s.id===id?{...s,verified:!s.verified}:s);await saveToGitHub();renderAll();};
+window.toggleActive=async(id)=>{scripts=scripts.map(s=>s.id===id?{...s,active:!s.active}:s);await saveToGitHub();renderAll();};
+window.adminDeleteUser=async(u)=>{if(!confirm(`Delete user ${u} and all their scripts?`))return;scripts=scripts.filter(s=>s.creator!==u);delete users[u];localStorage.setItem('bloxscripts_users',JSON.stringify(users));await saveToGitHub();renderAll();};
+
+// ========== EDIT MODAL ==========
+function openEditModal(id){const s=scripts.find(x=>x.id===id);if(!s)return;editingScriptId=id;document.getElementById('editModalName').value=s.name;document.getElementById('editModalGame').value=s.game;document.getElementById('editModalLoadstring').value=s.loadstring;document.getElementById('editModalExecutor').value=s.executor;document.getElementById('editModalKey').value=s.keyStatus;document.getElementById('editModalPaid').value=s.paidStatus;document.getElementById('editModal').classList.remove('hidden');}
+document.getElementById('saveEditBtn').addEventListener('click',async()=>{if(!editingScriptId)return;scripts=scripts.map(s=>s.id===editingScriptId?{...s,name:document.getElementById('editModalName').value,game:document.getElementById('editModalGame').value,loadstring:document.getElementById('editModalLoadstring').value,executor:document.getElementById('editModalExecutor').value,keyStatus:document.getElementById('editModalKey').value,paidStatus:document.getElementById('editModalPaid').value,updatedAt:Date.now()}:s);await saveToGitHub();renderAll();document.getElementById('editModal').classList.add('hidden');editingScriptId=null;});
+document.getElementById('closeEditModal').addEventListener('click',()=>{document.getElementById('editModal').classList.add('hidden');editingScriptId=null;});
+
+// ========== UPLOAD ==========
+document.getElementById('dropZone').addEventListener('click',()=>document.getElementById('fileInput').click());
+document.getElementById('dropZone').addEventListener('dragover',e=>{e.preventDefault();e.target.style.borderColor='var(--primary-neon)';});
+document.getElementById('dropZone').addEventListener('dragleave',e=>{e.target.style.borderColor='var(--border)';});
+document.getElementById('dropZone').addEventListener('drop',e=>{e.preventDefault();e.target.style.borderColor='var(--border)';const f=e.dataTransfer.files[0];if(f)readUploadedFile(f);});
+document.getElementById('fileInput').addEventListener('change',e=>{const f=e.target.files[0];if(f)readUploadedFile(f);});
+function readUploadedFile(f){const r=new FileReader();r.onload=ev=>{document.getElementById('pasteLoadstring').value=ev.target.result;document.getElementById('filePreview').classList.remove('hidden');if(!document.getElementById('editName').value)document.getElementById('editName').value=f.name.replace(/\.(lua|txt|text)$/i,'');};r.readAsText(f);}
+function selectKey(v){selectedKey=v;document.getElementById('tagNoKey').classList.toggle('selected',v==='no key');document.getElementById('tagKey').classList.toggle('selected',v==='key');}
+function selectPaid(v){selectedPaid=v;document.getElementById('tagFree').classList.toggle('selected',v==='free');document.getElementById('tagPaid').classList.toggle('selected',v==='paid');}
+selectKey('no key');selectPaid('free');
+document.getElementById('publishBtn').addEventListener('click',async()=>{if(!currentUser)return alert('Login required!');const n=document.getElementById('editName').value.trim(),g=document.getElementById('editGame').value,e=document.getElementById('editExecutor').value,ls=document.getElementById('pasteLoadstring').value.trim();if(!n||!g||!e||!ls)return alert('Fill all required fields!');scripts.push({id:'s'+Date.now(),name:n,game:g,loadstring:ls,executor:e,keyStatus:selectedKey,paidStatus:selectedPaid,features:document.getElementById('editFeatures').value.split('\n').filter(l=>l.trim()),creator:currentUser,active:true,verified:isAdmin(),createdAt:Date.now(),updatedAt:Date.now()});await saveToGitHub();renderAll();alert('✅ Script published!');document.getElementById('editName').value='';document.getElementById('pasteLoadstring').value='';document.getElementById('editFeatures').value='';document.getElementById('filePreview').classList.add('hidden');});
+document.getElementById('clearFormBtn').addEventListener('click',()=>{document.getElementById('editName').value='';document.getElementById('pasteLoadstring').value='';document.getElementById('editFeatures').value='';document.getElementById('filePreview').classList.add('hidden');});
+
+// ========== AUTH ==========
+document.getElementById('signupBtn').addEventListener('click',()=>{const u=document.getElementById('loginUsername').value.trim(),p=document.getElementById('loginPassword').value.trim();if(!u||!p)return alert('Fill all fields');if(Object.keys(users).find(k=>k.toLowerCase()===u.toLowerCase()))return alert('Username already taken');users[u]=p;localStorage.setItem('bloxscripts_users',JSON.stringify(users));alert('✅ Account created! Login now.');});
+document.getElementById('loginBtn').addEventListener('click',()=>{const u=document.getElementById('loginUsername').value.trim(),p=document.getElementById('loginPassword').value;const ex=Object.keys(users).find(k=>k.toLowerCase()===u.toLowerCase());if(ex&&users[ex]===p){currentUser=ex;localStorage.setItem('bloxscripts_user',currentUser);updateUI();alert('✅ Welcome back, '+currentUser+'!');}else alert('❌ Invalid username or password');});
+document.getElementById('logoutBtn').addEventListener('click',()=>{currentUser=null;localStorage.removeItem('bloxscripts_user');updateUI();});
+document.getElementById('changePasswordBtn').addEventListener('click',()=>document.getElementById('changePasswordPanel').classList.toggle('hidden'));
+document.getElementById('savePasswordBtn').addEventListener('click',()=>{const op=document.getElementById('oldPassword').value,np=document.getElementById('newPassword').value;if(users[currentUser]!==op)return alert('❌ Current password is wrong');users[currentUser]=np;localStorage.setItem('bloxscripts_users',JSON.stringify(users));alert('✅ Password changed!');document.getElementById('changePasswordPanel').classList.add('hidden');});
+document.getElementById('deleteAccountBtn').addEventListener('click',async()=>{if(!confirm('⚠️ Delete your account and ALL your scripts? This cannot be undone!'))return;scripts=scripts.filter(s=>s.creator!==currentUser);delete users[currentUser];localStorage.setItem('bloxscripts_users',JSON.stringify(users));currentUser=null;localStorage.removeItem('bloxscripts_user');await saveToGitHub();updateUI();alert('Account deleted.');});
+
+function updateUI(){if(currentUser){document.getElementById('loggedOutView').classList.add('hidden');document.getElementById('loggedInView').classList.remove('hidden');document.getElementById('profileName').textContent=currentUser;if(isAdmin())document.getElementById('adminBadge').classList.remove('hidden');else document.getElementById('adminBadge').classList.add('hidden');}else{document.getElementById('loggedOutView').classList.remove('hidden');document.getElementById('loggedInView').classList.add('hidden');document.getElementById('adminBadge').classList.add('hidden');}document.getElementById('adminTab').style.display=isAdmin()?'block':'none';updateUploadPage();renderAll();}
+
+// ========== NAVIGATION ==========
+document.querySelectorAll('.nav-tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(t.dataset.page+'Page').classList.add('active');}));
+
+// ========== FILTERS ==========
+document.getElementById('filterGame').innerHTML='<option value="">🎮 All Games</option>'+gamesList.map(g=>`<option>${g}</option>`).join('');
+document.getElementById('filterExecutor').innerHTML='<option value="">⚡ All Executors</option>'+executorList.map(e=>`<option>${e}</option>`).join('');
+['filterGame','filterKey','filterExecutor'].forEach(id=>document.getElementById(id).addEventListener('change',()=>renderScripts()));
+document.getElementById('searchBtn').addEventListener('click',()=>renderScripts(document.getElementById('searchInput').value));
+document.getElementById('searchInput').addEventListener('keyup',e=>{if(e.key==='Enter')renderScripts(document.getElementById('searchInput').value);});
+
+// ========== INIT ==========
+updateUI(); loadFromGitHub();
+</script>
+</body>
+</html>
