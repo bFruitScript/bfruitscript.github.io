@@ -19,11 +19,7 @@
             --info: #4488ff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', 'Roboto', sans-serif;
@@ -56,11 +52,7 @@
             text-decoration: none;
         }
 
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+        .nav-right { display: flex; align-items: center; gap: 1rem; }
 
         .login-btn-nav {
             background: transparent;
@@ -113,9 +105,7 @@
             transition: all 0.3s;
         }
 
-        .nav-menu-btn:hover .dot {
-            background: var(--dark-bg);
-        }
+        .nav-menu-btn:hover .dot { background: var(--dark-bg); }
 
         .nav-dropdown {
             position: absolute;
@@ -133,9 +123,7 @@
             z-index: 1001;
         }
 
-        .nav-dropdown.active {
-            display: flex;
-        }
+        .nav-dropdown.active { display: flex; }
 
         .nav-dropdown a {
             color: var(--neon-green);
@@ -182,9 +170,7 @@
             text-shadow: 0 0 5px var(--neon-green);
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+        .form-group { margin-bottom: 1.5rem; }
 
         .form-group label {
             display: block;
@@ -214,10 +200,7 @@
             box-shadow: var(--accent-glow);
         }
 
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
+        .form-group textarea { min-height: 120px; resize: vertical; }
 
         .btn {
             background: transparent;
@@ -239,40 +222,15 @@
             transform: translateY(-2px);
         }
 
-        .btn-danger {
-            border-color: var(--danger);
-            color: var(--danger);
-        }
+        .btn-danger { border-color: var(--danger); color: var(--danger); }
+        .btn-danger:hover { background: var(--danger); color: white; }
+        .btn-warning { border-color: var(--warning); color: var(--warning); }
+        .btn-warning:hover { background: var(--warning); color: var(--dark-bg); }
+        .btn-sm { padding: 0.4rem 1rem; font-size: 0.85rem; }
 
-        .btn-danger:hover {
-            background: var(--danger);
-            color: white;
-        }
+        .table-container { overflow-x: auto; }
 
-        .btn-warning {
-            border-color: var(--warning);
-            color: var(--warning);
-        }
-
-        .btn-warning:hover {
-            background: var(--warning);
-            color: var(--dark-bg);
-        }
-
-        .btn-sm {
-            padding: 0.4rem 1rem;
-            font-size: 0.85rem;
-        }
-
-        .table-container {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
 
         th, td {
             padding: 1rem;
@@ -280,14 +238,8 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        th {
-            background: var(--darker-bg);
-            color: var(--neon-green);
-        }
-
-        tr:hover {
-            background: rgba(57, 255, 20, 0.05);
-        }
+        th { background: var(--darker-bg); color: var(--neon-green); }
+        tr:hover { background: rgba(57, 255, 20, 0.05); }
 
         .badge {
             padding: 0.3rem 0.8rem;
@@ -297,29 +249,10 @@
             display: inline-block;
         }
 
-        .badge-free {
-            background: #39ff1433;
-            color: var(--neon-green);
-            border: 1px solid var(--neon-green);
-        }
-
-        .badge-paid {
-            background: #ffaa0033;
-            color: var(--warning);
-            border: 1px solid var(--warning);
-        }
-
-        .badge-key {
-            background: #4488ff33;
-            color: var(--info);
-            border: 1px solid var(--info);
-        }
-
-        .badge-keyless {
-            background: #ff444433;
-            color: var(--danger);
-            border: 1px solid var(--danger);
-        }
+        .badge-free { background: #39ff1433; color: var(--neon-green); border: 1px solid var(--neon-green); }
+        .badge-paid { background: #ffaa0033; color: var(--warning); border: 1px solid var(--warning); }
+        .badge-key { background: #4488ff33; color: var(--info); border: 1px solid var(--info); }
+        .badge-keyless { background: #ff444433; color: var(--danger); border: 1px solid var(--danger); }
 
         .script-grid {
             display: grid;
@@ -342,23 +275,11 @@
             box-shadow: var(--accent-glow);
         }
 
-        .script-card h3 {
-            color: var(--neon-green);
-            margin-bottom: 0.5rem;
-        }
+        .script-card h3 { color: var(--neon-green); margin-bottom: 0.5rem; }
 
-        .script-meta {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin: 1rem 0;
-        }
+        .script-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
 
-        .review-section {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-        }
+        .review-section { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
 
         .review-card {
             background: var(--dark-bg);
@@ -368,10 +289,7 @@
             margin: 1rem 0;
         }
 
-        .stars {
-            color: var(--warning);
-            font-size: 1.2rem;
-        }
+        .stars { color: var(--warning); font-size: 1.2rem; }
 
         .modal {
             display: none;
@@ -386,9 +304,7 @@
             justify-content: center;
         }
 
-        .modal.active {
-            display: flex;
-        }
+        .modal.active { display: flex; }
 
         .modal-content {
             background: var(--card-bg);
@@ -410,17 +326,9 @@
             margin-top: auto;
         }
 
-        .footer p {
-            margin: 0.5rem 0;
-        }
-
-        .footer .copyright {
-            color: var(--text-secondary);
-        }
-
-        .footer .made-with {
-            color: var(--neon-green);
-        }
+        .footer p { margin: 0.5rem 0; }
+        .footer .copyright { color: var(--text-secondary); }
+        .footer .made-with { color: var(--neon-green); }
 
         .pagination {
             display: flex;
@@ -441,26 +349,10 @@
             transition: all 0.3s;
         }
 
-        .pagination button:hover:not(:disabled) {
-            background: var(--neon-green);
-            color: var(--dark-bg);
-        }
-
-        .pagination button.active {
-            background: var(--neon-green);
-            color: var(--dark-bg);
-            font-weight: bold;
-        }
-
-        .pagination button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .pagination .page-info {
-            color: var(--text-secondary);
-            padding: 0 1rem;
-        }
+        .pagination button:hover:not(:disabled) { background: var(--neon-green); color: var(--dark-bg); }
+        .pagination button.active { background: var(--neon-green); color: var(--dark-bg); font-weight: bold; }
+        .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .pagination .page-info { color: var(--text-secondary); padding: 0 1rem; }
 
         .tabs {
             display: flex;
@@ -487,13 +379,8 @@
             border-color: var(--neon-green);
         }
 
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
         .random-picker {
             background: linear-gradient(135deg, var(--card-bg), var(--darker-bg));
@@ -511,10 +398,7 @@
             text-shadow: var(--accent-glow);
         }
 
-        .loading {
-            text-align: center;
-            padding: 2rem;
-        }
+        .loading { text-align: center; padding: 2rem; }
 
         .spinner {
             border: 4px solid var(--border-color);
@@ -526,10 +410,7 @@
             margin: 0 auto;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .toast {
             position: fixed;
@@ -544,10 +425,7 @@
             box-shadow: var(--accent-glow);
         }
 
-        @keyframes slideIn {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
-        }
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
 
         .sync-indicator {
             display: inline-block;
@@ -557,15 +435,8 @@
             margin-right: 5px;
         }
 
-        .sync-online {
-            background: #39ff14;
-            box-shadow: 0 0 10px #39ff14;
-        }
-
-        .sync-offline {
-            background: #ff4444;
-            box-shadow: 0 0 10px #ff4444;
-        }
+        .sync-online { background: #39ff14; box-shadow: 0 0 10px #39ff14; }
+        .sync-offline { background: #ff4444; box-shadow: 0 0 10px #ff4444; }
 
         .db-status {
             font-size: 0.8rem;
@@ -580,18 +451,10 @@
         }
 
         @media (max-width: 768px) {
-            .script-grid {
-                grid-template-columns: 1fr;
-            }
-            .navbar {
-                padding: 1rem;
-            }
-            .main-content {
-                padding: 1rem;
-            }
-            .nav-right {
-                gap: 0.5rem;
-            }
+            .script-grid { grid-template-columns: 1fr; }
+            .navbar { padding: 1rem; }
+            .main-content { padding: 1rem; }
+            .nav-right { gap: 0.5rem; }
         }
     </style>
 </head>
@@ -659,6 +522,8 @@
                     <option value="arsenal">Arsenal</option>
                     <option value="adopt-me">Adopt Me</option>
                     <option value="jailbreak">Jailbreak</option>
+                    <option value="steal-an-egg">Steal an Egg</option>
+                    <option value="99-nights-forest">99 Nights Forest</option>
                 </select>
                 <button class="btn" onclick="pickRandomScript()">🎰 Pick Random Script</button>
                 <div class="result" id="randomResult"></div>
@@ -709,7 +574,7 @@
                 <h2 class="card-title">🔍 Search & Discover Scripts</h2>
                 <p style="color: var(--text-secondary); margin-bottom: 1rem;">Showing top scripts. Use filters to refine results.</p>
                 <div class="form-group">
-                    <input type="text" id="searchInput" placeholder="Search by name, tag, or category..." oninput="debounceSearch()">
+                    <input type="text" id="searchInput" placeholder="Search by name or category..." oninput="debounceSearch()">
                 </div>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <select id="categoryFilter" onchange="searchScripts()">
@@ -731,6 +596,8 @@
                         <option value="arsenal">Arsenal</option>
                         <option value="adopt-me">Adopt Me</option>
                         <option value="jailbreak">Jailbreak</option>
+                        <option value="steal-an-egg">Steal an Egg</option>
+                        <option value="99-nights-forest">99 Nights Forest</option>
                     </select>
                     <select id="sortBy" onchange="searchScripts()">
                         <option value="downloads">Most Downloaded</option>
@@ -768,6 +635,8 @@
                             <option value="arsenal">Arsenal</option>
                             <option value="adopt-me">Adopt Me</option>
                             <option value="jailbreak">Jailbreak</option>
+                            <option value="steal-an-egg">Steal an Egg</option>
+                            <option value="99-nights-forest">99 Nights Forest</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -804,12 +673,26 @@
                         <label>Script Content * (Paste your script here)</label>
                         <textarea id="scriptContent" required placeholder="loadstring(game:HttpGet('...'))()"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label>Tags (comma separated)</label>
-                        <input type="text" id="scriptTags" placeholder="auto farm, esp, aimbot">
-                    </div>
                     <button type="submit" class="btn">📤 Upload Script</button>
                 </form>
+            </div>
+
+            <!-- ==================== SECOND UPLOAD SYSTEM: FILE-BASED ==================== -->
+            <div class="card" id="fileUploadCard" style="display:none; margin-top: 2rem;">
+                <h2 class="card-title">📁 File Upload System (Beta)</h2>
+                <p style="color: var(--text-secondary);">Upload script files (e.g. <code>Wow.txt</code>, <code>Wow.lua</code>). The system auto-detects the script name from the filename, and you can edit everything before publishing.</p>
+
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label>Select Script Files * (multiple allowed)</label>
+                    <input type="file" id="fileInput" multiple accept=".txt,.lua,.js,.json" onchange="handleFileSelect(event)">
+                </div>
+
+                <div id="filePreviewContainer" style="display:none;">
+                    <h3 style="color: var(--neon-green); margin-top: 1rem;">📝 Review & Edit Before Publishing</h3>
+                    <div id="filePreviewList"></div>
+                    <button class="btn" style="margin-top: 1rem;" onclick="publishAllFiles()">🚀 Publish All Scripts</button>
+                    <button class="btn btn-danger" style="margin-top: 1rem;" onclick="clearPendingFiles()">❌ Clear All</button>
+                </div>
             </div>
         </div>
 
@@ -925,33 +808,25 @@
 
     <script>
         // ==================== JSONBIN CONFIGURATION ====================
-        // FIXED BIN ID - Everyone reads/writes to this same database!
         const JSONBIN_CONFIG = {
             masterKey: '$2a$10$G9c7wKkHC3Ar0BXm6bF1DOjf0xSDpYXOuImbuhhXgOdL8AmLwkRHa',
             accessKey: '$2a$10$zZHqQgObdjxsUEZ5FnskZOjoTOLfYdduhG2A60R4E2MKggn0Z1QZm',
-            binId: '6a17c00a21f9ee59d293d334',  // YOUR ACTUAL BIN ID
+            binId: '6a17c00a21f9ee59d293d334',
             baseUrl: 'https://api.jsonbin.io/v3/b'
         };
 
         // ==================== DATABASE FUNCTIONS ====================
-        
         async function loadDB() {
             try {
                 const response = await fetch(`${JSONBIN_CONFIG.baseUrl}/${JSONBIN_CONFIG.binId}/latest`, {
-                    headers: {
-                        'X-Master-Key': JSONBIN_CONFIG.masterKey
-                    }
+                    headers: { 'X-Master-Key': JSONBIN_CONFIG.masterKey }
                 });
-                
-                if (!response.ok) {
-                    throw new Error('Failed to load database');
-                }
-                
+                if (!response.ok) throw new Error('Failed to load database');
                 const result = await response.json();
                 updateSyncStatus(true);
                 return result.record;
             } catch (error) {
-                console.error('Cloud load failed, trying localStorage fallback:', error);
+                console.error('Cloud load failed, using localStorage:', error);
                 updateSyncStatus(false);
                 return getLocalDB();
             }
@@ -968,11 +843,7 @@
                     },
                     body: JSON.stringify(db)
                 });
-                
-                if (!response.ok) {
-                    throw new Error('Failed to save database');
-                }
-                
+                if (!response.ok) throw new Error('Failed to save database');
                 saveLocalDB(db);
                 updateSyncStatus(true);
                 return true;
@@ -998,7 +869,6 @@
                 ],
                 scripts: []
             };
-            
             const saved = localStorage.getItem('bfscripts_db');
             return saved ? JSON.parse(saved) : defaultDB;
         }
@@ -1010,7 +880,6 @@
         function updateSyncStatus(online) {
             const dot = document.getElementById('syncDot');
             const text = document.getElementById('syncText');
-            
             if (online) {
                 dot.className = 'sync-indicator sync-online';
                 text.textContent = 'Cloud';
@@ -1023,11 +892,8 @@
         async function initializeFixedBin() {
             try {
                 const response = await fetch(`${JSONBIN_CONFIG.baseUrl}/${JSONBIN_CONFIG.binId}/latest`, {
-                    headers: {
-                        'X-Master-Key': JSONBIN_CONFIG.masterKey
-                    }
+                    headers: { 'X-Master-Key': JSONBIN_CONFIG.masterKey }
                 });
-                
                 if (!response.ok) {
                     console.log('Creating initial data in bin...');
                     const defaultDB = {
@@ -1043,7 +909,6 @@
                         ],
                         scripts: []
                     };
-                    
                     const createResponse = await fetch(`${JSONBIN_CONFIG.baseUrl}/${JSONBIN_CONFIG.binId}`, {
                         method: 'PUT',
                         headers: {
@@ -1053,7 +918,6 @@
                         },
                         body: JSON.stringify(defaultDB)
                     });
-                    
                     if (createResponse.ok) {
                         console.log('Bin initialized successfully!');
                         updateSyncStatus(true);
@@ -1080,6 +944,7 @@
         let currentSearchPage = 1;
         let currentSearchResults = [];
         let dbCache = null;
+        let pendingFiles = []; // For file upload system
 
         document.addEventListener('DOMContentLoaded', async () => {
             dbCache = await initializeFixedBin();
@@ -1100,7 +965,7 @@
         function navigateTo(page) {
             document.getElementById('navDropdown').classList.remove('active');
             document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-            
+
             const pageMap = {
                 'home': 'homePage',
                 'search': 'searchPage',
@@ -1108,12 +973,12 @@
                 'account': 'accountPage',
                 'admin': 'adminPage'
             };
-            
+
             const pageId = pageMap[page];
             if (pageId) {
                 document.getElementById(pageId).style.display = 'block';
                 currentPage = page;
-                
+
                 if (page === 'script') checkUploadPermission();
                 if (page === 'account') loadAccountPage();
                 if (page === 'admin') loadAdminPanel();
@@ -1126,36 +991,27 @@
         }
 
         function handleLoginClick() {
-            if (currentUser) {
-                logout();
-            } else {
-                navigateTo('account');
-            }
+            if (currentUser) logout();
+            else navigateTo('account');
         }
 
         async function login() {
             const username = document.getElementById('loginUsername').value.trim();
             const password = document.getElementById('loginPassword').value;
-            
             if (!username || !password) {
                 showToast('Please enter username and password', 'warning');
                 return;
             }
-
             dbCache = await loadDB();
-            
             const user = dbCache.users.find(u => u.username === username && u.password === password);
-            
             if (user) {
                 currentUser = user;
                 localStorage.setItem('bfscripts_currentUser', JSON.stringify(user));
                 showToast('Login successful!', 'success');
                 updateUIForUser();
-                
                 if (user.role === 'owner' || user.role === 'admin') {
                     document.getElementById('adminLink').style.display = 'block';
                 }
-                
                 navigateTo('home');
             } else {
                 showToast('Invalid username or password', 'error');
@@ -1165,36 +1021,28 @@
         async function register() {
             const username = document.getElementById('loginUsername').value.trim();
             const password = document.getElementById('loginPassword').value;
-            
             if (!username || !password) {
                 showToast('Please enter username and password', 'warning');
                 return;
             }
-
             if (password.length < 6) {
                 showToast('Password must be at least 6 characters', 'warning');
                 return;
             }
-
             dbCache = await loadDB();
-            
             if (dbCache.users.find(u => u.username === username)) {
                 showToast('Username already exists. Please choose another.', 'error');
                 return;
             }
-
             const newUser = {
-                username: username,
-                password: password,
+                username, password,
                 role: 'user',
                 uid: 'USER' + Date.now(),
                 permissions: [],
                 createdAt: new Date().toISOString()
             };
-
             dbCache.users.push(newUser);
             await saveDB(dbCache);
-            
             currentUser = newUser;
             localStorage.setItem('bfscripts_currentUser', JSON.stringify(newUser));
             showToast('Account created successfully!', 'success');
@@ -1224,21 +1072,15 @@
 
         function updateUIForUser() {
             const loginBtn = document.getElementById('loginBtnNav');
-            if (currentUser) {
-                loginBtn.textContent = '🚪 ' + currentUser.username;
-            } else {
-                loginBtn.textContent = '🔑 Login';
-            }
+            loginBtn.textContent = currentUser ? '🚪 ' + currentUser.username : '🔑 Login';
         }
 
         async function uploadScript(event) {
             event.preventDefault();
-            
             if (!currentUser) {
                 showToast('You must be logged in to upload scripts', 'error');
                 return;
             }
-
             const scriptData = {
                 id: 'SCRIPT' + Date.now(),
                 name: document.getElementById('scriptName').value,
@@ -1248,7 +1090,6 @@
                 keySystem: document.getElementById('scriptKey').value,
                 features: document.getElementById('scriptFeatures').value.split('\n').filter(f => f.trim()),
                 content: document.getElementById('scriptContent').value,
-                tags: document.getElementById('scriptTags').value.split(',').map(t => t.trim()).filter(t => t),
                 author: currentUser.username,
                 uploadedBy: currentUser.role === 'owner' ? 'owner' : (currentUser.role === 'admin' ? 'admin' : 'user'),
                 verified: currentUser.role === 'owner' || currentUser.role === 'admin',
@@ -1257,31 +1098,172 @@
                 createdAt: new Date().toISOString(),
                 trending: false
             };
-
             dbCache = await loadDB();
             dbCache.scripts.push(scriptData);
             const saved = await saveDB(dbCache);
-            
             if (saved) {
                 showToast('Script uploaded to cloud! Visible to everyone! 🌍', 'success');
             } else {
                 showToast('Script saved locally. Will sync when online.', 'warning');
             }
-            
             document.getElementById('scriptUploadForm').reset();
         }
 
         function checkUploadPermission() {
             const uploadForm = document.getElementById('scriptUploadForm');
             const uploadMessage = document.getElementById('uploadMessage');
-            
+            const fileUploadCard = document.getElementById('fileUploadCard');
             if (currentUser) {
                 uploadForm.style.display = 'block';
                 uploadMessage.style.display = 'none';
+                fileUploadCard.style.display = 'block';
             } else {
                 uploadForm.style.display = 'none';
                 uploadMessage.style.display = 'block';
+                fileUploadCard.style.display = 'none';
             }
+        }
+
+        // ==================== FILE UPLOAD SYSTEM ====================
+        function handleFileSelect(event) {
+            const files = Array.from(event.target.files);
+            if (files.length === 0) return;
+            pendingFiles = [];
+            let processed = 0;
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const cleanName = file.name.replace(/\.[^/.]+$/, '');
+                    pendingFiles.push({
+                        filename: file.name,
+                        cleanName: cleanName,
+                        content: e.target.result
+                    });
+                    processed++;
+                    if (processed === files.length) renderFilePreviews();
+                };
+                reader.readAsText(file);
+            });
+        }
+
+        function renderFilePreviews() {
+            const container = document.getElementById('filePreviewContainer');
+            const list = document.getElementById('filePreviewList');
+            if (pendingFiles.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+            container.style.display = 'block';
+            list.innerHTML = pendingFiles.map((f, i) => `
+                <div class="card" style="background: var(--dark-bg); margin-bottom: 1rem;">
+                    <div class="form-group">
+                        <label>📄 Original File: ${escapeHtml(f.filename)}</label>
+                        <small style="color: var(--text-secondary);">Auto-named: <strong style="color: var(--neon-green);">${escapeHtml(f.cleanName)}</strong></small>
+                    </div>
+                    <div class="form-group">
+                        <label>Script Name (editable)</label>
+                        <input type="text" id="fileName_${i}" value="${escapeHtml(f.cleanName)}">
+                    </div>
+                    <div class="form-group">
+                        <label>Game</label>
+                        <select id="fileGame_${i}">
+                            <option value="blox-fruits">Blox Fruits</option>
+                            <option value="arsenal">Arsenal</option>
+                            <option value="adopt-me">Adopt Me</option>
+                            <option value="jailbreak">Jailbreak</option>
+                            <option value="steal-an-egg">Steal an Egg</option>
+                            <option value="99-nights-forest">99 Nights Forest</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="fileCategory_${i}">
+                            <option value="combat">Combat</option>
+                            <option value="farming">Farming</option>
+                            <option value="movement">Movement</option>
+                            <option value="utility">Utility</option>
+                            <option value="visual">Visual</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select id="fileType_${i}">
+                            <option value="free">Free</option>
+                            <option value="paid">Paid</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Key System</label>
+                        <select id="fileKey_${i}">
+                            <option value="key">Key Required</option>
+                            <option value="keyless">KeyLess</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Features (one per line)</label>
+                        <textarea id="fileFeatures_${i}" placeholder="Auto Farm&#10;Auto Quest"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Script Content (editable)</label>
+                        <textarea id="fileContent_${i}" style="min-height: 200px;">${escapeHtml(f.content)}</textarea>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function clearPendingFiles() {
+            pendingFiles = [];
+            document.getElementById('fileInput').value = '';
+            document.getElementById('filePreviewContainer').style.display = 'none';
+            showToast('Cleared pending files', 'info');
+        }
+
+        async function publishAllFiles() {
+            if (!currentUser) {
+                showToast('You must be logged in to publish scripts', 'error');
+                return;
+            }
+            if (pendingFiles.length === 0) {
+                showToast('No files to publish', 'warning');
+                return;
+            }
+            dbCache = await loadDB();
+            let count = 0;
+            for (let i = 0; i < pendingFiles.length; i++) {
+                const name = document.getElementById(`fileName_${i}`).value.trim();
+                if (!name) {
+                    showToast(`Script #${i + 1} has no name`, 'warning');
+                    return;
+                }
+                const scriptData = {
+                    id: 'SCRIPT' + Date.now() + '_' + i,
+                    name: name,
+                    game: document.getElementById(`fileGame_${i}`).value,
+                    category: document.getElementById(`fileCategory_${i}`).value,
+                    type: document.getElementById(`fileType_${i}`).value,
+                    keySystem: document.getElementById(`fileKey_${i}`).value,
+                    features: document.getElementById(`fileFeatures_${i}`).value.split('\n').filter(f => f.trim()),
+                    content: document.getElementById(`fileContent_${i}`).value,
+                    sourceFilename: pendingFiles[i].filename,
+                    author: currentUser.username,
+                    uploadedBy: currentUser.role === 'owner' ? 'owner' : (currentUser.role === 'admin' ? 'admin' : 'user'),
+                    verified: currentUser.role === 'owner' || currentUser.role === 'admin',
+                    reviews: [],
+                    downloads: 0,
+                    createdAt: new Date().toISOString(),
+                    trending: false
+                };
+                dbCache.scripts.push(scriptData);
+                count++;
+            }
+            const saved = await saveDB(dbCache);
+            if (saved) {
+                showToast(`${count} script(s) published to cloud! 🌍`, 'success');
+            } else {
+                showToast(`${count} script(s) saved locally. Will sync when online.`, 'warning');
+            }
+            clearPendingFiles();
         }
 
         async function loadTrendingScripts() {
@@ -1290,13 +1272,11 @@
                 .filter(s => s.verified)
                 .sort((a, b) => b.downloads - a.downloads)
                 .slice(0, 6);
-            
             const container = document.getElementById('trendingScripts');
             if (trending.length === 0) {
                 container.innerHTML = '<p style="text-align:center; padding:2rem;">No scripts yet. Be the first to upload!</p>';
                 return;
             }
-            
             container.innerHTML = trending.map(script => `
                 <div class="script-card">
                     <h3>${escapeHtml(script.name)}</h3>
@@ -1327,27 +1307,21 @@
             const type = document.getElementById('typeFilter').value;
             const game = document.getElementById('gameFilterSearch').value;
             const sort = document.getElementById('sortBy').value;
-            
             dbCache = await loadDB();
             let results = [...dbCache.scripts];
-            
             if (searchTerm) {
-                results = results.filter(s => 
+                results = results.filter(s =>
                     s.name.toLowerCase().includes(searchTerm) ||
-                    s.tags.some(t => t.toLowerCase().includes(searchTerm)) ||
                     s.category.toLowerCase().includes(searchTerm)
                 );
             }
-            
             if (category !== 'all') results = results.filter(s => s.category === category);
             if (type !== 'all') results = results.filter(s => s.type === type);
             if (game !== 'all') results = results.filter(s => s.game === game);
-            
             if (sort === 'newest') results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
             else if (sort === 'oldest') results.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
             else if (sort === 'name') results.sort((a, b) => a.name.localeCompare(b.name));
             else results.sort((a, b) => b.downloads - a.downloads);
-            
             currentSearchResults = results;
             renderSearchPage(1);
         }
@@ -1358,15 +1332,12 @@
             const startIndex = (page - 1) * SCRIPTS_PER_PAGE;
             const endIndex = startIndex + SCRIPTS_PER_PAGE;
             const pageResults = currentSearchResults.slice(startIndex, endIndex);
-            
             const container = document.getElementById('searchResults');
-            
             if (pageResults.length === 0) {
                 container.innerHTML = '<p style="text-align:center; padding:2rem;">No scripts found. Try different filters!</p>';
                 document.getElementById('pagination').style.display = 'none';
                 return;
             }
-            
             container.innerHTML = pageResults.map((script, index) => `
                 <div class="script-card">
                     <div style="display: flex; justify-content: space-between; align-items: start;">
@@ -1381,55 +1352,41 @@
                         <span class="badge">${script.category.toUpperCase()}</span>
                     </div>
                     <p>⬇️ ${script.downloads} downloads | 📅 ${new Date(script.createdAt).toLocaleDateString()}</p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                        ${script.tags.map(tag => `<span class="badge" style="background:#39ff1422;">#${escapeHtml(tag)}</span>`).join(' ')}
-                    </div>
                     <button class="btn btn-sm" onclick="viewScript('${script.id}')">View Details</button>
                     <button class="btn btn-sm" onclick="copyScript('${script.id}')">📋 Copy</button>
                 </div>
             `).join('');
-            
             renderPagination(totalPages, page);
         }
 
         function renderPagination(totalPages, currentPage) {
             const paginationContainer = document.getElementById('pagination');
-            
             if (totalPages <= 1) {
                 paginationContainer.style.display = 'none';
                 return;
             }
-            
             paginationContainer.style.display = 'flex';
-            
             let paginationHTML = '';
             paginationHTML += `<button ${currentPage === 1 ? 'disabled' : ''} onclick="goToPage(${currentPage - 1})">◀ Prev</button>`;
-            
             const maxVisiblePages = 5;
             let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
             let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-            
             if (endPage - startPage + 1 < maxVisiblePages) {
                 startPage = Math.max(1, endPage - maxVisiblePages + 1);
             }
-            
             if (startPage > 1) {
                 paginationHTML += `<button onclick="goToPage(1)">1</button>`;
                 if (startPage > 2) paginationHTML += `<span class="page-info">...</span>`;
             }
-            
             for (let i = startPage; i <= endPage; i++) {
                 paginationHTML += `<button class="${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
             }
-            
             if (endPage < totalPages) {
                 if (endPage < totalPages - 1) paginationHTML += `<span class="page-info">...</span>`;
                 paginationHTML += `<button onclick="goToPage(${totalPages})">${totalPages}</button>`;
             }
-            
             paginationHTML += `<button ${currentPage === totalPages ? 'disabled' : ''} onclick="goToPage(${currentPage + 1})">Next ▶</button>`;
             paginationHTML += `<span class="page-info">Page ${currentPage} of ${totalPages}</span>`;
-            
             paginationContainer.innerHTML = paginationHTML;
         }
 
@@ -1444,10 +1401,8 @@
             dbCache = await loadDB();
             const script = dbCache.scripts.find(s => s.id === scriptId);
             if (!script) return;
-            
             const modal = document.getElementById('scriptModal');
             const content = document.getElementById('scriptModalContent');
-            
             content.innerHTML = `
                 <h2 style="color: var(--neon-green);">${escapeHtml(script.name)}</h2>
                 <p><strong>Author:</strong> ${escapeHtml(script.author)} ${script.uploadedBy === 'owner' ? '(Owner)' : script.uploadedBy === 'admin' ? '(Admin)' : ''}</p>
@@ -1460,13 +1415,10 @@
                 </div>
                 <h3 style="color: var(--neon-green); margin-top: 1.5rem;">Features:</h3>
                 <ul>${script.features.map(f => `<li>${escapeHtml(f)}</li>`).join('')}</ul>
-                <h3 style="color: var(--neon-green);">Tags:</h3>
-                <p>${script.tags.map(t => `#${escapeHtml(t)}`).join(', ')}</p>
                 <div style="margin: 1.5rem 0;">
                     <button class="btn" onclick="copyScript('${script.id}')">📋 Copy Script</button>
                     <button class="btn" onclick="downloadScript('${script.id}')">⬇️ Download (${script.downloads})</button>
                 </div>
-                
                 <div class="review-section">
                     <h3 style="color: var(--neon-green);">Reviews</h3>
                     <div id="reviews_${script.id}">
@@ -1496,10 +1448,8 @@
                     </div>
                     <button class="btn" onclick="addReview('${script.id}')">Submit Review</button>
                 </div>
-                
                 <button class="btn btn-danger" style="margin-top: 1rem;" onclick="document.getElementById('scriptModal').classList.remove('active')">Close</button>
             `;
-            
             modal.classList.add('active');
         }
 
@@ -1507,23 +1457,17 @@
             dbCache = await loadDB();
             const script = dbCache.scripts.find(s => s.id === scriptId);
             if (!script) return;
-            
             const user = document.getElementById(`reviewUser_${scriptId}`).value.trim();
             const rating = parseInt(document.getElementById(`reviewRating_${scriptId}`).value);
             const comment = document.getElementById(`reviewComment_${scriptId}`).value.trim();
-            
             if (!user || !comment) {
                 showToast('Please fill in all fields', 'warning');
                 return;
             }
-            
             script.reviews.push({
-                user: user,
-                rating: rating,
-                comment: comment,
+                user, rating, comment,
                 date: new Date().toISOString()
             });
-            
             await saveDB(dbCache);
             viewScript(scriptId);
             showToast('Review added to cloud! 🌍', 'success');
@@ -1533,7 +1477,6 @@
             loadDB().then(db => {
                 const script = db.scripts.find(s => s.id === scriptId);
                 if (!script) return;
-                
                 navigator.clipboard.writeText(script.content).then(() => {
                     showToast('Script copied to clipboard!', 'success');
                 }).catch(() => {
@@ -1546,10 +1489,8 @@
             dbCache = await loadDB();
             const script = dbCache.scripts.find(s => s.id === scriptId);
             if (!script) return;
-            
             script.downloads++;
             await saveDB(dbCache);
-            
             const blob = new Blob([script.content], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -1557,7 +1498,6 @@
             a.download = `${script.name.replace(/\s+/g, '_')}.lua`;
             a.click();
             URL.revokeObjectURL(url);
-            
             viewScript(scriptId);
         }
 
@@ -1565,14 +1505,11 @@
             const gameFilter = document.getElementById('gameFilter').value;
             dbCache = await loadDB();
             let scripts = dbCache.scripts.filter(s => s.verified);
-            
             if (gameFilter !== 'all') scripts = scripts.filter(s => s.game === gameFilter);
-            
             if (scripts.length === 0) {
                 document.getElementById('randomResult').innerHTML = '<p>No scripts found for this game!</p>';
                 return;
             }
-            
             const random = scripts[Math.floor(Math.random() * scripts.length)];
             document.getElementById('randomResult').innerHTML = `
                 <h3>🎉 ${escapeHtml(random.name)}</h3>
@@ -1588,21 +1525,17 @@
                 document.getElementById('loginForm').style.display = 'block';
                 return;
             }
-            
             document.getElementById('accountInfo').style.display = 'block';
             document.getElementById('myScripts').style.display = 'block';
             document.getElementById('loginForm').style.display = 'none';
-            
             document.getElementById('accountDetails').innerHTML = `
                 <p><strong>Username:</strong> ${escapeHtml(currentUser.username)}</p>
                 <p><strong>Role:</strong> ${currentUser.role.toUpperCase()}</p>
                 <p><strong>UID:</strong> ${escapeHtml(currentUser.uid)}</p>
                 <p><strong>Joined:</strong> ${new Date(currentUser.createdAt).toLocaleDateString()}</p>
             `;
-            
             dbCache = await loadDB();
             const userScripts = dbCache.scripts.filter(s => s.author === currentUser.username);
-            
             const scriptsList = document.getElementById('userScriptsList');
             if (userScripts.length === 0) {
                 scriptsList.innerHTML = '<p>You haven\'t uploaded any scripts yet.</p>';
@@ -1623,11 +1556,9 @@
 
         async function deleteScript(scriptId) {
             if (!confirm('Are you sure you want to delete this script?')) return;
-            
             dbCache = await loadDB();
             dbCache.scripts = dbCache.scripts.filter(s => s.id !== scriptId);
             await saveDB(dbCache);
-            
             showToast('Script deleted from cloud', 'success');
             loadAccountPage();
             if (currentPage === 'admin') loadAdminPanel();
@@ -1636,12 +1567,10 @@
         async function deleteAccount() {
             if (!confirm('Are you sure you want to delete your account? This cannot be undone!')) return;
             if (!confirm('Final confirmation: All your scripts will also be deleted.')) return;
-            
             dbCache = await loadDB();
             dbCache.users = dbCache.users.filter(u => u.username !== currentUser.username);
             dbCache.scripts = dbCache.scripts.filter(s => s.author !== currentUser.username);
             await saveDB(dbCache);
-            
             logout();
             showToast('Account deleted', 'success');
             navigateTo('home');
@@ -1653,7 +1582,6 @@
                 navigateTo('home');
                 return;
             }
-            
             loadScriptManagement();
             loadAccountManagement();
         }
@@ -1661,10 +1589,8 @@
         function switchAdminTab(tabId) {
             document.querySelectorAll('#adminPage .tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('#adminPage .tab-content').forEach(content => content.classList.remove('active'));
-            
             document.querySelector(`[onclick="switchAdminTab('${tabId}')"]`).classList.add('active');
             document.getElementById(tabId).classList.add('active');
-            
             if (tabId === 'scriptManage') loadScriptManagement();
             if (tabId === 'accountManage') loadAccountManagement();
         }
@@ -1672,7 +1598,6 @@
         async function loadScriptManagement() {
             dbCache = await loadDB();
             const table = document.getElementById('adminScriptTable');
-            
             table.innerHTML = dbCache.scripts.map(script => `
                 <tr>
                     <td>${escapeHtml(script.name)}</td>
@@ -1689,7 +1614,6 @@
         async function loadAccountManagement() {
             dbCache = await loadDB();
             const table = document.getElementById('adminAccountTable');
-            
             table.innerHTML = dbCache.users.map(user => `
                 <tr>
                     <td>${escapeHtml(user.username)}</td>
@@ -1707,7 +1631,6 @@
                 showToast('Permission denied', 'error');
                 return;
             }
-            
             dbCache = await loadDB();
             const script = dbCache.scripts.find(s => s.id === scriptId);
             if (script) {
@@ -1723,19 +1646,15 @@
                 showToast('Permission denied', 'error');
                 return;
             }
-            
             if (username === 'FirePlayzYT0') {
                 showToast('Cannot delete owner account', 'error');
                 return;
             }
-            
             if (!confirm(`Delete user "${username}" and all their scripts?`)) return;
-            
             dbCache = await loadDB();
             dbCache.users = dbCache.users.filter(u => u.username !== username);
             dbCache.scripts = dbCache.scripts.filter(s => s.author !== username);
             await saveDB(dbCache);
-            
             loadAccountManagement();
             showToast('User deleted', 'success');
         }
@@ -1745,39 +1664,30 @@
                 showToast('Only owner can create admin accounts', 'error');
                 return;
             }
-            
             const username = document.getElementById('newAdminUsername').value.trim();
             const password = document.getElementById('newAdminPassword').value;
-            
             if (!username || !password) {
                 showToast('Please fill all fields', 'warning');
                 return;
             }
-            
             const permissions = [];
             if (document.getElementById('permCreateAdmin').checked) permissions.push('create_admin');
             if (document.getElementById('permManageScript').checked) permissions.push('manage_scripts');
             if (document.getElementById('permManageAccount').checked) permissions.push('manage_accounts');
-            
             dbCache = await loadDB();
-            
             if (dbCache.users.find(u => u.username === username)) {
                 showToast('Username already exists', 'error');
                 return;
             }
-            
             const newAdmin = {
-                username: username,
-                password: password,
+                username, password,
                 role: 'admin',
                 uid: 'ADMIN' + Date.now(),
-                permissions: permissions,
+                permissions,
                 createdAt: new Date().toISOString()
             };
-            
             dbCache.users.push(newAdmin);
             await saveDB(dbCache);
-            
             showToast('Admin account created!', 'success');
             document.getElementById('newAdminUsername').value = '';
             document.getElementById('newAdminPassword').value = '';
@@ -1787,7 +1697,6 @@
             const parent = document.getElementById(tabId).parentElement;
             parent.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             parent.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
             document.querySelector(`[onclick="switchTab('${tabId}')"]`).classList.add('active');
             document.getElementById(tabId).classList.add('active');
         }
@@ -1802,8 +1711,8 @@
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = 'toast';
-            toast.style.borderColor = type === 'error' ? 'var(--danger)' : 
-                                      type === 'warning' ? 'var(--warning)' : 
+            toast.style.borderColor = type === 'error' ? 'var(--danger)' :
+                                      type === 'warning' ? 'var(--warning)' :
                                       type === 'success' ? 'var(--neon-green)' : 'var(--info)';
             toast.textContent = message;
             container.appendChild(toast);
